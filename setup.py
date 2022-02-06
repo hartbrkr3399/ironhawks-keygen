@@ -4,7 +4,7 @@ this_directory = Path(__file__).parent
 long_description_text = (this_directory / "README.md").read_text()
 
 setup(
-  name = 'IronHawks KeyGen',
+  name = 'ironhawks-keygen',
   packages = ['ironhawkskeygen'],
   version = '0.1',
   license='MIT',
