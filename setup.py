@@ -14,7 +14,8 @@ setup(
   author = 'Praveen K',
   author_email = 'hartbrkrlegacy@gmail.com',
   url = 'https://github.com/hartbrkr3399/ironhawks-keygen',
-  download_url = 'https://github.com/hartbrkr3399/ironhawks-keygen/archive/refs/tags/v1.0.tar.gz',
+  download_url = 'https://github.com/hartbrkr3399/ironhawks-keygen/archive/' + 
+                 'refs/tags/v1.0.tar.gz',
   keywords = ['password', 'keygen', 'random'],
   install_requires=[],
   classifiers=[
