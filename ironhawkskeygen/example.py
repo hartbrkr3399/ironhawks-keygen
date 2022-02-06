@@ -7,9 +7,13 @@ delay.
 Created by Praveen K. Contact: hartbrkrlegacy@gmail.com
 '''
 
-
+import logging
 import sys
 import time
+
+logging.basicConfig(level=logging.INFO, 
+                    format='[%(asctime)s] %(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
 
 import keygen
 
@@ -25,10 +29,10 @@ STRATEGIES = {
 
 
 def show_strategies():
-    print("Choose one of the following options to generate a password:")
+    logger.info("Choose one of the following options to generate a password:")
     for i in range(1,7):
-        print(str(i) + ". " + STRATEGIES[i])
-    print("0. Exit.")
+        logger.info(str(i) + ". " + str(STRATEGIES[i]))
+    logger.info("0. Exit.")
 
 
 def get_strategy():
@@ -40,7 +44,8 @@ def get_strategy():
             sys.exit("Exited.")
         return choice
     except ValueError:
-        print("Invalid input! Enter a number between 0 to 6.")
+        logger.error("Invalid input! Enter a number between 0 to 6.", 
+                     exc_info=True)
         return get_strategy()
     
 
@@ -53,28 +58,29 @@ def get_length():
             raise ValueError()
         return length
     except ValueError:
-        print("Invalid input! Enter a number between 8 to 128 or 0 to exit.")
+        logger.error("""Invalid input! Enter a number between 8 to 128 or 0 to 
+exit.""", exc_info=True)
         return get_length()
 
 
 if __name__ == '__main__':
-    print(__doc__)
+    logger.info(__doc__)
     show_strategies()
     strategy_number = get_strategy()
 
-    print('''Accepted. In the following prompt, enter the preferred length of 
-the password. Minimum is 8 and Maximum is 128. Recommended length is 12 to 
-15 characters.''')
+    logger.info('''Accepted. In the following prompt, enter the preferred 
+length of the password. Minimum is 8 and Maximum is 128. Recommended length is 
+12 to 15 characters.''')
     password_length = get_length()
 
-    print('''Accepted. Generating a password with strategy: '{}' and 
+    logger.info('''Accepted. Generating a password with strategy: '{}' and 
 length: {}...'''.format(
     str(STRATEGIES[strategy_number]), str(password_length)))
 
     generated_password = keygen.generate(strategy_number, password_length)
     
     time.sleep(2)
-    print("Password generation successful!")
-    print("\nGenerated Password: {}".format(generated_password))
+    logger.info("Password generation successful!")
+    logger.info("\nGenerated Password: {}".format(generated_password))
     time.sleep(1)
-    print("\nExited.")
+    logger.info("Exited.")
