@@ -17,7 +17,7 @@ The available Strategies are:
 
 The Constants used are:
 1. ALPHABETS - String having all Lower and Upper cases alphabets.
-2. DIGITS - Straing having digits from 0 to 9.
+2. DIGITS - String having digits from 0 to 9.
 3. SPECIAL_CHARACTERS - String having a selection of punctuation 
                         characters that are present on standard US 
                         keyboard and frequently used in passwords.
