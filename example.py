@@ -1,5 +1,5 @@
 '''
-IronHawks-KeyGen Example v0.1
+IronHawks KeyGen: Example v0.1
 
 An example file to showcase keygen.py functionality with a nice output 
 delay.

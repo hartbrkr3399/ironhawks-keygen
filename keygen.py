@@ -1,5 +1,5 @@
 '''
-IronHawks-KeyGen v0.1
+IronHawks KeyGen v0.1
 
 Effortlessly generate random passwords of custom lengths.
 
