@@ -6,7 +6,7 @@ long_description_text = (this_directory / "README.md").read_text()
 setup(
   name = 'ironhawks-keygen',
   packages = ['ironhawkskeygen'],
-  version = '0.1',
+  version = '0.1.0',
   license='MIT',
   description = 'Effortlessly generate random passwords of custom lengths.',
   long_description_content_type = "text/markdown",
