@@ -1,11 +1,12 @@
 '''
-IronHawks KeyGen: Example v0.1.1
+IronHawks KeyGen: Example v0.2.1
 
 An example file to showcase keygen.py functionality with a nice output 
-delay.
+latency.
 
 Created by Praveen K. Contact: hartbrkrlegacy@gmail.com
 '''
+
 
 import logging
 import sys
@@ -63,6 +64,17 @@ exit.""", exc_info=True)
         return get_length()
 
 
+def get_strict():
+    try:
+        strict = str(input("Enable Strict mode? (True/False): "))
+        if strict not in ["True", "False"]:
+            raise ValueError()
+        return strict == "True"
+    except ValueError:
+        logger.error("""Invalid input! Enter either True or False.""", 
+                     exc_info=True)
+        return get_strict()
+
 if __name__ == '__main__':
     logger.info(__doc__)
     show_strategies()
@@ -73,14 +85,21 @@ length of the password. Minimum is 8 and Maximum is 128. Recommended length is
 12 to 15 characters.''')
     password_length = get_length()
 
-    logger.info('''Accepted. Generating a password with strategy: '{}' and 
-length: {}...'''.format(
-    str(STRATEGIES[strategy_number]), str(password_length)))
+    logger.info('''Accepted. In the following prompt, enter True to enable 
+Strict mode() or False to disable it. Any other input except True or False will
+ lead to prompting again. Refer docs for "Strict" mode.''')
+    strict = get_strict()
 
-    generated_password = keygen.generate(strategy_number, password_length)
+    logger.info('''Accepted. Generating a password with strategy: '{}', length:
+ {} and strict: {}...'''.format(
+    str(STRATEGIES[strategy_number]), str(password_length), str(strict)
+    ))
+
+    generated_password = keygen.generate(strategy_number, password_length, 
+                                         strict=strict)
     
     time.sleep(2)
     logger.info("Password generation successful!")
-    logger.info("\nGenerated Password: {}".format(generated_password))
-    time.sleep(1)
+    logger.info("Generated Password: {}".format(generated_password))
+    time.sleep(2)
     logger.info("Exited.")
